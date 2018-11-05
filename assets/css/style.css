@@ -2,18 +2,21 @@
 
 #wordGuess{
     letter-spacing: 10px;
-
+    text-align: center;
 
 }
 
+.display-4 {
 
+    text-align: center;
+}
 #wins {
 
-    color: red;
+    color: green;
 }
 
 #losses{
-     color: green;
+     color: red;
 
 }
 
@@ -21,9 +24,13 @@
     color: blue;
 
 }
+.letters {
+    color: purple;
+    text-align: center;
+}
 
-#lettersGuessed{
-
+#lettersGuessed {
+    color: purple;
     letter-spacing: 15px;
 
 

@@ -1,48 +1,40 @@
 
-var game= {
-wins: 0,
-losses: 0,
-userGuess: "",
-remGuesses: 0,
-guessWord: "",
-wordsArray: [
-    "BROWNS", 
-    "DOLPHINS", 
-    "COWBOYS",
-    "TEXANS",
-    "CHARGERS",
-    "PACKERS",
-    "BEARS",
-    "BILLS",
-    "BRONCOS",
-    "GIANTS"
-],
-
-lettersGuessed: [""]
-
+var game = {
+    wins: 0,
+    losses: 0,
+    userGuess: "",
+    remGuesses: 0,
+    guessWord: "",
+    wordsArray: [
+        "BROWNS",
+        "DOLPHINS",
+        "COWBOYS",
+        "TEXANS",
+        "CHARGERS",
+        "PACKERS",
+        "BEARS",
+        "BILLS",
+        "BRONCOS",
+        "GIANTS"
+    ],
+    lettersGuessed: [""]
 }
 
 game.guessWord = game.wordsArray[Math.floor(Math.random() * game.wordsArray.length)];
 
-var lossesID = getElementByid("losses");
-var winsID = getElementByid("wins");
-var wordGuess = getElementByid("wordGuess");
-var guessesRemaining = getElementByid("guessesRemaining");
-var lettersGuessed = getElementByid("lettersGuessed");
-var word = game.guessWord.replace(/\w/g,"_");
+console.log(game.guessWord);
 
+var lossesID = document.getElementById("losses");
+var winsID = document.getElementById("wins");
+var remGuessesID = document.getElementById("remGuesses");
+var lettersGuessedID = document.getElementById("lettersGuessed");
+var wordGuessID = document.getElementById("wordGuess");
+var word = game.guessWord.replace(/\w/g, "_"); // use a RegEx to replace all letters with "_"
 
-console.log(output);
+console.log(word);
 
-
-function updateAll() {
-
-
-wordGuessID.textcontent = word;
-winsID.textcontent = "Wins: " + game.wins;
-lossesID.textcontent = "Losses " + game.losses;
-lettersGuessedID.textcontent = "Letters guessed " + game.userGuess;
-guessesRemainingID.textcontent = "Guesses Remaining " + game.remGuesses;
-}
-
-
+winsID.textContent = "Wins: " + game.wins;
+lossesID.textContent = "Losses: " + game.losses;
+remGuessesID.textContent = "Remaining Guesses: " + game.remGuesses;
+lettersGuessedID.textContent = game.lettersGuessed;
+wordGuessID.textContent = word;
