@@ -17,18 +17,42 @@ var game = {
         "BEARS",
         "BILLS",
         "BRONCOS",
-        "GIANTS"
+        "GIANTS",
+        "INDIANS",
+        "CAVS",
+        "CUBS",
+        "BULLS",
+        "YANKEES",
+        "METS",
+        "REDSOX",
+        "BRAVES",
+        "DODGERS",
+        "ASTROS",
+        "BREWERS",
+        "ROCKETS",
+        "NETS",
+        "HORNETS",
+        "PISTONS",
+        "HEAT",
+        "NUGGETS"
+
     ],
     lettersGuessed: [""] // this will be the incorrect letters guessed then displayed
 
 }
 
-   
-// var numberOfLetters = game.guessWord.length;//turns guessWord number from Script to Intiger
-// var toltalNumberOfGuesses = game.guessWord.length + 5;//number of guesses = length of word = 5
-// var remGuesses = (toltalNumberOfGuesses - game.lettersGuessed.length);//remainder of guesses left
-// var letters = game.guessWord.split("");//splits the guess word into an array of letters.
+var person //= prompt("Please enter your name", "Players Name"); then starts the game from scratch
 
+function namePrompt() {
+    var person = prompt("Please enter your name", "Players Name");
+    if (person != null) {
+        document.getElementById("name").innerHTML =
+            "Hello " + person + "! <br> Press any letter to guess the word? <br> Hint, know your sports teams!";
+        winsID.textContent = "Wins: " + 0;
+        lossesID.textContent = "losses: " + 0;
+    }
+}
+document.getElementById("name").onclick = namePrompt;
 
 
 var lossesID = document.getElementById("losses");
@@ -36,12 +60,12 @@ var winsID = document.getElementById("wins");
 var remGuessesID = document.getElementById("remGuesses");
 var lettersGuessedID = document.getElementById("lettersGuessed");
 var wordGuessID = document.getElementById("wordGuess");
-var word //= game.guessWord.replace(/\w/g, "_"); // use a RegEx to replace all letters with "_"
+var word // see line 79 = game.guessWord.replace(/\w/g, "_"); // use a RegEx to replace all letters with "_"
 
 console.log(word);
 
 
-var userLetter 
+var userLetter // letter pressed by user
 var wordArray  // array of letters from the word being guessed
 var guessWordArray  // array of word as it appears to the user
 
@@ -49,19 +73,21 @@ var guessWordArray  // array of word as it appears to the user
 
 function restartGame() {
 
- // ramdom selection of word from WordsArray
- game.guessWord = game.wordsArray[Math.floor(Math.random() * game.wordsArray.length)];
- game.remGuesses = Math.floor(game.guessWord.length * 1.5);  // number of guesses is dependant of string length
- word = game.guessWord.replace(/\w/g, "_"); // use a RegEx to replace all letters with "_"
- game.lettersGuessed = [];
- console.log(game.remGuesses);
- console.log(game.guessWord);
- userLetter = "";
- wordArray = game.guessWord.split(""); // array of letters from the word being guessed
- guessWordArray = word.split(""); // array of word as it appears to the user
- updateAll();
+    // ramdom selection of word from WordsArray
+    game.guessWord = game.wordsArray[Math.floor(Math.random() * game.wordsArray.length)];
+    game.remGuesses = Math.floor(game.guessWord.length * 1.5);  // number of guesses is dependant of string length
+    word = game.guessWord.replace(/\w/g, "_"); // use a RegEx to replace all letters with "_"
+    game.lettersGuessed = [];
+    console.log(game.remGuesses);
+    console.log(game.guessWord);
+    userLetter = "";
+    wordArray = game.guessWord.split(""); // array of letters from the word being guessed
+    guessWordArray = word.split(""); // array of word as it appears to the user
+    updateAll();
 
 }
+
+//starts a new word when new word button is clicked
 restartGame();
 document.getElementById("btnReset").onclick = restartGame;
 
@@ -91,24 +117,24 @@ document.onkeyup = function (event) {
     userLetter = userLetter.toUpperCase(); // make input upper case
     // game.lettersGuessed.push(userLetter); // add user input to array
     // make sure userLetter is a letter
-    if (userLetter.match(/^[A-Za-z]+$/)) {
+    if (userLetter.match(/^[A-Za-z]$/)) {
 
-        console.log("here",userLetter);
+        console.log(userLetter);
         console.log(game.guessWord.length);
 
         // check string for userLetter. if it exists, replace the "_" with the letter
         if (game.guessWord.search(userLetter) != -1) {  //search the array to see if the user letter exists in the guess word
             for (i = 0; i < wordArray.length; i++) {
-                console.log(i)
+
                 if (wordArray[i] === userLetter) {
                     guessWordArray[i] = userLetter;  //  change elements in an array 
-                    console.log(guessWordArray);
-                    word = guessWordArray.join("");  // concatenate all values of the array to put everything back into a single string
 
+                    word = guessWordArray.join("");  // concatenate all values of the array to put everything back into a single string
+                    console.log(word);
                     if (word == game.guessWord) {
-                        game.remGuesses = 0
+
                         game.wins++;
-                        
+                        wordGuessID.textContent = word;
                         alert("You Win");
                         restartGame();
                     }
