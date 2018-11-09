@@ -24,7 +24,12 @@
     color: blue;
 
 }
-.letters {
+
+#letG {
+
+    text-align: center;
+}
+.lettersGuessed {
     color: purple;
     text-align: center;
 }
@@ -32,6 +37,6 @@
 #lettersGuessed {
     color: purple;
     letter-spacing: 15px;
-
+    text-align: center;
 
 }
