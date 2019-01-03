@@ -1,5 +1,5 @@
 # Word-Guess-Game
-Click the Start Game button.
+Click the Start Game button at the top left corner of the screen.
 Guess what the word is by keying one letter at a time. 
 If you guess the letter correct it will appear in the empty spaces. 
 The incorrect letters will be posted below the word being guessed.
